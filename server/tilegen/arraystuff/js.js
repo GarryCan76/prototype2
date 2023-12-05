@@ -125,3 +125,52 @@ function updateNeighbors(matrix, row, col) {
 //     i++
 // })
 
+function createHTMLElement(elementType, parent, attributes, childrenArray) {
+    let e = document.createElement(elementType);
+
+// add attributes to element
+    if (attributes) {
+        const keys = Object.keys(attributes);
+        keys.forEach(key => {
+            if (key === 'classList') {
+                const classList = attributes[key].split(" ")
+                classList.forEach(classItem => {
+                    e[key].add(classItem)
+                })
+            } else if (key === 'addEventListener') {
+                e[key](attributes[key][0], attributes[key][1])
+            } else {
+                e[key] = attributes[key];
+            }
+        })
+    }
+//append children
+    if (childrenArray) {
+        childrenArray.forEach(child => {
+            if (Object.keys(child).length > 0) {
+                this.createHTMLElement(Object.keys(child), e, child[Object.keys(child)]['attributes'], child[Object.keys(child)]['children'])
+            } else {
+                e.appendChild(child)
+            }
+        })
+    }
+    if (parent) {
+        parent.appendChild(e)
+    }
+    return e
+}
+
+let domMatrix = [];
+for (let y = 0; y < gridSize;y++){
+    let row = createHTMLElement('div', document.body)
+    let domRow = [];
+    for (let x = 0; x < gridSize;x++){
+        let tile = createHTMLElement('div', row, {'classList':'tile'})
+        domRow.push(tile)
+    }
+    domMatrix.push(domRow)
+}
+console.log(domMatrix)
+path.forEach(step=>{
+    domMatrix[step.row][step.col].style.backgroundColor = 'blue'
+})

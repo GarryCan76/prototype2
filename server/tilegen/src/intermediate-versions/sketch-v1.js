@@ -33,13 +33,17 @@ function createHTMLElement(elementType, parent, attributes, childrenArray, color
   }
   return e
 }
-let zoomFactor = 10;
+let zoomFactor = 8;
 
 function setup() {
-  createCanvas(20, 20);
+  createCanvas(40, 40);
   background(200);
   noLoop();
 }
+
+let barriers = [
+  // Add more barrier nodes as needed
+];
 
 function draw() {
   let tilemap = [];
@@ -52,10 +56,11 @@ function draw() {
       // each plotted value. If zoomFactor is 100, we're effectively zooming in
       // 100x on the noise map.
       let noiseValue = noise(x / zoomFactor, y / zoomFactor);
-      noiseValue += 0.1
+      noiseValue -= 0.1
       if (noiseValue < 0.4) {
         //water
         terrainColor = color(30 - 30 * noiseValue, 176 - 176 * noiseValue, 251 - 251 * noiseValue);
+        barriers.push({ row: x, col: y },)
       } else if (noiseValue < 0.45) {
         //sand
         terrainColor = color(255 - 255 * noiseValue/2, 246 - 246 * noiseValue/2, 193 - 193 * noiseValue/2);
@@ -71,7 +76,7 @@ function draw() {
     }
     tilemap.push(row)
   }
-  console.log(tilemap)
+  console.log(barriers)
   
 
   updatePixels();

@@ -1,5 +1,5 @@
 body{
-    background-color: dimgray;
+    /*background-color: dimgray;*/
 }
 div{
     display: flex;
@@ -10,8 +10,8 @@ div{
 .tile{
     display: flex;
     flex-wrap: wrap;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 .tile-space{
     width: 50px;

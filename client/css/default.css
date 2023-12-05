@@ -1,0 +1,8 @@
+body{
+    background-color: dimgray;
+}
+*{
+    border: white solid 1px;
+    color: white;
+    margin: 3px;
+}

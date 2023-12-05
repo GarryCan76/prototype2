@@ -1,0 +1,23 @@
+body{
+    background-color: dimgray;
+}
+div{
+    display: flex;
+    margin: 0;
+
+    border: solid 1px black;
+}
+.tile{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100px;
+    height: 100px;
+}
+.tile-space{
+    width: 50px;
+    height: 50px;
+}
+.tile *{
+    margin: 0;
+    font-size: 30px;
+}

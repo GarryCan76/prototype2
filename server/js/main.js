@@ -1,4 +1,4 @@
-const {User, Browser} = require('../models/user.js');
+const {User, BrowserLog} = require('../models/user.js');
 
 class Main{
     constructor(socket) {
@@ -9,10 +9,10 @@ class Main{
         this.user_auth = user_auth;
         User.findById(user_auth[this.socket.id])
             .then((result) => {
-                console.log(result)
+                console.log(result['name'])
+                this.socket.emit('mainframe',result['name'])
             })
             .catch((err)=>{})
-        console.log('log')
     }
 }
 

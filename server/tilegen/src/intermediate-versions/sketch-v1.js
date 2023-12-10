@@ -1,4 +1,5 @@
 /** This version has basic Perlin noise shown in grayscale. */
+// import * as exports from '../../libraries/p5.min.js';
 function createHTMLElement(elementType, parent, attributes, childrenArray, color){
   let e = document.createElement(elementType);
   if (color){

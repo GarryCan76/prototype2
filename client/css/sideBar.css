@@ -1,0 +1,41 @@
+.side-bar{
+    background-color: plum;
+    width: 100px;
+    height: 100px;
+}
+
+.window{
+    resize: both;
+    min-width: 200px;
+    width: 200px ; min-height: 200px;
+    background-color: #51c051;
+    overflow: auto;
+    position: fixed;
+    left: 100px;
+}
+
+.drag-bar{
+    width: 90%;
+    height: 30px;
+    background-color: #3b3b3b;
+}
+.close-window{
+    min-width: 30px;
+    width: 5%;
+    height: 30px;
+    background-color: #be2019;
+}
+.pin-window{
+    min-width: 30px; width: 5%; height: 30px; background-color: #ff244d;
+}
+
+.window-top{
+    display: flex;
+    flex-direction: row;
+}
+
+.side-bar-window{
+    width: 100px;
+    height: 100px;
+    background-color: #1e0303;
+}

@@ -4,5 +4,8 @@ body{
 *{
     border: white solid 1px;
     color: white;
-    margin: 3px;
+    margin: 0;
+}
+html, body{
+    height: 100%;
 }

@@ -1,4 +1,4 @@
-const {User, Browser} = require('../models/user.js');
+const {User, BrowserLog} = require('../models/user.js');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 class LoginRegister{
@@ -25,7 +25,7 @@ class LoginRegister{
                      if (errorList.length > 0){
                          this.socket.emit('userLoginError', errorList)
                      }else {
-                         const browser = new Browser({
+                         const browser = new BrowserLog({
                              name: username,
                              user_id: id,
                          })

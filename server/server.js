@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const http = require('http').Server(app);
 const mongoose = require('mongoose');
-const {User, Browser} = require('./models/user.js');
+const {User, BrowserLog} = require('./models/user.js');
 const Loginregister = require('./js/loginregister.js');
 const Main = require('./js/main.js');
 let db = undefined;
@@ -39,11 +39,9 @@ io.on('connection', socket =>{
     let main = new Main.Main(socket);
     loginregister.loginHandler()
     socket.on('userAuth', token=>{
-        Browser.findById(token)
+        BrowserLog.findById(token)
             .then((result) => {
                 user_auth[socket.id] = result['user_id'];
-                console.log(user_auth)
-                socket.emit('mainframe', null)
                 main.core(user_auth)
             })
             .catch((err) => {

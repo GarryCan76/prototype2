@@ -22,5 +22,5 @@ const browserSchema = new Shema({
     },
 }, { timestamps: true })
 
-const Browser = mongoose.model('Browser_logins', browserSchema);
-module.exports.Browser = Browser;
+const BrowserLog = mongoose.model('Browser_logins', browserSchema);
+module.exports.BrowserLog = BrowserLog;

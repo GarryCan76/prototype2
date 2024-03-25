@@ -10,7 +10,7 @@ class Main{
         User.findById(user_auth[this.socket.id])
             .then((result) => {
                 console.log(result['name'])
-                this.socket.emit('mainframe',result['name'])
+                this.socket.emit('homePage',result['name'])
             })
             .catch((err)=>{})
     }

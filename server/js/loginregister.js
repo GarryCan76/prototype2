@@ -39,6 +39,8 @@ class LoginRegister{
                      }
                  })
                  .catch((err) => {
+                     errorList.push(" Username and password does not match ")
+                     this.socket.emit('userLoginError', errorList)
                      console.log(err)
                  })
 

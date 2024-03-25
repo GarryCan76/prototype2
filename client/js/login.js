@@ -59,7 +59,7 @@ export default class {
         this.showPassword(['inputPassword1'])
 
         let loginDiv = document.getElementById('login-div');
-        let submit = jsml.createHTMLElement('button', document.getElementById('login-div'), {
+        let submit = jsml.createHTMLElement('button', document.getElementById('login-div'), '',{
             'type':'submit',
             'classList':'btn btn-primary',
             'innerText':'Login',
@@ -87,7 +87,7 @@ export default class {
 
             }]
         });
-        let register = jsml.createHTMLElement('button', document.getElementById('login-div'), {
+        let register = jsml.createHTMLElement('button', document.getElementById('login-div'), '',{
             'type':'button',
             'classList':'btn',
             'innerText':'Or register',
@@ -140,7 +140,7 @@ export default class {
         this.showPassword(['inputPassword1', 'inputPassword2'])
 
         //submit button for sending input to server
-        let submit = jsml.createHTMLElement('button', document.getElementById('login-div'), {
+        let submit = jsml.createHTMLElement('button', document.getElementById('login-div'), '',{
             'type':'submit',
             'classList':'btn btn-primary',
             'innerText':'Register',
@@ -186,7 +186,7 @@ export default class {
         });
 
         //button to go to login page
-        let login = jsml.createHTMLElement('button', document.getElementById('login-div'), {
+        let login = jsml.createHTMLElement('button', document.getElementById('login-div'), '',{
             'type':'button',
             'classList':'btn',
             'innerText':'Login',

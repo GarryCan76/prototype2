@@ -11,8 +11,29 @@ export default class Jsml {
         }
     }
 
-    createHTMLElement(elementType, parent, attributes, childrenArray) {
+    createHTMLElement(elementType, parent, text, attributes, childrenArray) {
         let e = document.createElement(elementType);
+        let tags = false;
+        if (text){
+            if (tags === 'inside'){
+                e.classList.add('tags')
+                let tagOpen = document.createElement('strong');
+                tagOpen.innerText = '<'+ elementType +'>';
+                let tagClose = document.createElement('strong');
+                tagClose.innerText = '</'+ elementType +'>';
+                e.appendChild(tagOpen)
+                e.innerHTML += text;
+                e.appendChild(tagClose)
+            }else {
+                e.innerHTML = text;
+            }
+        //     give it color
+            let textValue = e.innerHTML;
+            let coloredText = textValue.replace(/\b\d+\b/g, function(match) {
+                return '<span class="number">' + match + '</span>';
+            });
+            e.innerHTML = coloredText;
+        }
 
         // add attributes to element
         if (attributes) {
@@ -24,26 +45,58 @@ export default class Jsml {
                         e[key].add(classItem)
                     })
                 } else if (key === 'addEventListener') {
-                    e[key](attributes[key][0], attributes[key][1])
+                    e[key](attributes[key][0], attributes[key][1]);
                 } else {
                     e[key] = attributes[key];
                 }
             })
         }
+
         //append children
         if (childrenArray) {
             childrenArray.forEach(child => {
                 if (Object.keys(child).length > 0) {
-                    this.createHTMLElement(Object.keys(child), e, child[Object.keys(child)]['attributes'], child[Object.keys(child)]['children'])
+                    let at = child[Object.keys(child)]['attributes'];
+                    console.log(at)
+                    this.createHTMLElement(Object.keys(child), e, false, false, at, child[Object.keys(child)]['children'])
                 } else {
                     e.appendChild(child)
                 }
             })
         }
         if (parent) {
-            parent.appendChild(e)
+            if (tags === 'around'){
+                let tagOpen = document.createElement('strong');
+                tagOpen.innerText = '<'+ elementType +'>';
+                let tagClose = document.createElement('strong');
+                tagClose.innerText = '</'+ elementType +'>';
+                let tagDiv = document.createElement('div');
+                tagDiv.appendChild(tagOpen)
+                tagDiv.appendChild(e)
+                tagDiv.appendChild(tagClose)
+                parent.appendChild(tagDiv)
+                tagDiv.classList.add('tags-around')
+                return tagDiv
+            }else {
+                parent.appendChild(e)
+                return e
+            }
+        }else {
+            if (tags === 'around'){
+                let tagOpen = document.createElement('strong');
+                tagOpen.innerText = '<'+ elementType +'>';
+                let tagClose = document.createElement('strong');
+                tagClose.innerText = '</'+ elementType +'>';
+                let tagDiv = document.createElement('div');
+                tagDiv.appendChild(tagOpen)
+                tagDiv.appendChild(e)
+                tagDiv.appendChild(tagClose)
+                tagDiv.classList.add('tags-around')
+                return tagDiv
+            }else {
+                return e
+            }
         }
-        return e
     }
     elementFromHtml(html) {
         const template = document.createElement("template");

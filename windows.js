@@ -7,10 +7,15 @@ export default class SideWindows{
         let sideBar = jsml.elementFromHtml(`<div class="side-bar"></div>`);
         document.body.appendChild(style);
         let sideBarArray = [];
-        for (let i = 0; i < 3;i++){
-            let window = this.createSideWindow(i);
-            sideBarArray.push(window)
-        }
+
+
+        let tech = this.createSideWindow('tech');
+        sideBarArray.push(tech)
+        let trading = this.createSideWindow('trading');
+        sideBarArray.push(trading)
+        let chat = this.createSideWindow('chat');
+        sideBarArray.push(chat)
+
         console.log(sideBarArray)
         sideBarArray.forEach(sideWindow=>{
             let sideBarWindow = jsml.elementFromHtml(`<div class="side-bar-window">`+ sideWindow.id +`</div>`);

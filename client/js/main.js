@@ -1,11 +1,12 @@
 const socket = io();
 import Login from './login.js';
 const login = new Login(socket);
-import Mainframe from './mainframe.js';
+
+import HomePage from './homePage.js';
+const homePage = new HomePage();
 socket.on('connect', ()=> {
-    socket.on('mainframe', name=>{
-        const mainPage = new Mainframe(socket);
-        mainPage.core(name)
+    socket.on('homePage', name=>{
+        console.log(name)
     })
     socket.on('userAuthFailed', auth=>{
         login.loginPage(auth)

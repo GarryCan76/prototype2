@@ -3,10 +3,11 @@ import Login from './login.js';
 const login = new Login(socket);
 
 import HomePage from './homePage.js';
-const homePage = new HomePage();
+const home = new HomePage();
 socket.on('connect', ()=> {
     socket.on('homePage', name=>{
         console.log(name)
+        home.homepage()
     })
     socket.on('userAuthFailed', auth=>{
         login.loginPage(auth)

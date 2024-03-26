@@ -4,11 +4,10 @@ const jsml = new Jsml();
 export default class Home{
     constructor() {
         jsml.deleteChildren(document.body)
-        this.Homepage()
 
     }
 
-    Homepage(){
+    homepage(){
         let ok = jsml.elementFromHtml(`<div>
 
 

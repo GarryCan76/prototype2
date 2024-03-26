@@ -7,9 +7,10 @@ export default class Home{
 
     }
 
-    homepage(){
+    homepage(name){
+        jsml.deleteChildren(document.body)
         let ok = jsml.elementFromHtml(`<div>
-
+`+ name +`
 
 
 </div>`)

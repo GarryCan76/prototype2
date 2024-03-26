@@ -6,8 +6,7 @@ import HomePage from './homePage.js';
 const home = new HomePage();
 socket.on('connect', ()=> {
     socket.on('homePage', name=>{
-        console.log(name)
-        home.homepage()
+        home.homepage(name)
     })
     socket.on('userAuthFailed', auth=>{
         login.loginPage(auth)
